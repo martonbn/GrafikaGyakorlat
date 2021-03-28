@@ -1,1 +1,3 @@
 # GrafikaGyakorlat
+
+A következőet tervezem:
