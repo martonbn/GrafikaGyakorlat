@@ -13,7 +13,10 @@ void draw_triangles(const Model* model)
     int vertex_index, texture_index, normal_index;
     float x, y, z, u, v;
 
+    
     glBegin(GL_TRIANGLES);
+   
+    
 
     for (i = 0; i < model->n_triangles; ++i) {
         for (k = 0; k < 3; ++k) {
