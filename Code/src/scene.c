@@ -77,9 +77,9 @@ void draw_scene(const Scene* scene)
 
 void draw_origin()
 {
-    
+    glRotatef(-90.0f, -90.0f, 0.0f, 0.0f);
     glBegin(GL_LINES);
-    glRotatef(45.0f, 45.0f, 0.0f, 0.0f);
+    
 
     glColor3f(1, 0, 0);
     glVertex3f(0, 0, 0);
