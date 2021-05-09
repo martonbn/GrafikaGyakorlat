@@ -15,7 +15,8 @@ void init_camera(Camera* camera)
     camera->speed.x = 0.0;
     camera->speed.y = 0.0;
     camera->speed.z = 0.0;
-
+    glViewport(1280, 720, 0, 0);
+    glutInitWindowSize(1280, 720);
     is_preview_visible = FALSE;
 }
 

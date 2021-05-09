@@ -29,7 +29,7 @@ void init_scene(Scene* scene)
 
 void set_lighting()
 {
-    float ambient_light[] = { 0.0f, 0.0f, 0.0f, 1.0f };
+    float ambient_light[] = { 1.0f, 1.0f, 1.0f, 1.0f };
     float diffuse_light[] = { 0.0f, 0.0f, 0.0, 1.0f };
     float specular_light[] = { 0.0f, 0.0f, 0.0f, 1.0f };
     float position[] = { 0.0f, 0.0f, 10.0f, 1.0f };
@@ -78,6 +78,8 @@ void draw_scene(const Scene* scene)
 void draw_origin()
 {
     glRotatef(-90.0f, -90.0f, 0.0f, 0.0f);
+    glScalef(0.98f, 0.98f, 0.98f);
+    glTranslatef(0.9285f, -0.9285f, 0.0f);  
     glBegin(GL_LINES);
     
 
