@@ -1,17 +1,19 @@
 #include "scene.h"
-
 #include <GL/glut.h>
-
 #include <obj/load.h>
 #include <obj/draw.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 void init_scene(Scene* scene)
 {
+    init_models(scene);
+    set_position_hed(scene);
     load_model(&(scene->cube), "cube.obj");
-    //load_model(&(scene->hedgie), "Hedgie.obj");
     scene->texture_id = load_texture("cube.png"); 
-
-    glBindTexture(GL_TEXTURE_2D, scene->texture_id);
+    
+    //glBindTexture(GL_TEXTURE_2D, scene->texture_id);
 
     scene->material.ambient.red = 0.4;
     scene->material.ambient.green = 0.4;
@@ -68,14 +70,43 @@ void set_material(const Material* material)
     glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, &(material->shininess));
 }
 
+float angle = 0.0f;
+
 void draw_scene(const Scene* scene)
 {
     set_material(&(scene->material));
     set_lighting();
     draw_origin();
+
+    glPushMatrix();
+    glScalef(1.0f, 1.0f, 1.0f);
+    angle += 0.09f;
+    glRotatef(angle,0.0f,0.0f,0.0f);
+    glTranslatef(scene->hedgie.position.x, scene->hedgie.position.y, scene->hedgie.position.z+20);
+    draw_model(&(scene->hedgie));
+    glPopMatrix();
+
     draw_model(&(scene->cube));
+    glRotatef(200.0f, 0.0f, 0.0f, 0.0f);
 
 }
+
+void set_position_hed(Scene *scene)
+{
+    scene->hedgie.position.x = -25;
+    scene->hedgie.position.y = -20;
+    scene->hedgie.position.z = 0;
+}
+
+
+
+
+void init_models(Scene *scene)
+{
+    load_model(&(scene->hedgie.model), "Hedgie.obj");
+}
+
+
 
 void draw_origin()
 {
