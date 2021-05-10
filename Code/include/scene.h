@@ -6,18 +6,37 @@
 
 #include <obj/model.h>
 
+
+typedef struct Object
+{
+    Model model;
+    vec3 position;
+    vec3 scale;
+    vec3 speed;
+    vec3 rotation;
+    vec3 prev_position;
+} Object;
+
+
 typedef struct Scene
 {
     Model cube;
-
+    Object hedgie;
     Material material;
     GLuint texture_id;
 } Scene;
+
+
 
 /**
  * Initialize the scene by loading models.
  */
 void init_scene(Scene* scene);
+
+
+void init_models(Scene *scene);
+
+
 
 /**
  * Set the lighting of the scene.
