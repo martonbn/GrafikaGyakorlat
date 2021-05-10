@@ -8,31 +8,32 @@
 void init_scene(Scene* scene)
 {
     load_model(&(scene->cube), "cube.obj");
+    //load_model(&(scene->hedgie), "Hedgie.obj");
     scene->texture_id = load_texture("cube.png"); 
 
     glBindTexture(GL_TEXTURE_2D, scene->texture_id);
 
-    scene->material.ambient.red = 0.6;
-    scene->material.ambient.green = 0.6;
-    scene->material.ambient.blue = 0.6;
+    scene->material.ambient.red = 0.4;
+    scene->material.ambient.green = 0.4;
+    scene->material.ambient.blue = 0.4;
 
-    scene->material.diffuse.red = 1.1;
-    scene->material.diffuse.green = 1.1;
-    scene->material.diffuse.blue = 1.1;
+    scene->material.diffuse.red = 0.9;
+    scene->material.diffuse.green = 0.9;
+    scene->material.diffuse.blue = 0.9;
 
-    scene->material.specular.red = 0.0;
-    scene->material.specular.green = 0.0;
-    scene->material.specular.blue = 0.0;
+    scene->material.specular.red = 0.8;
+    scene->material.specular.green = 1.5;
+    scene->material.specular.blue = 1.8;
 
     scene->material.shininess = 0.0;
 }
 
 void set_lighting()
 {
-    float ambient_light[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    float ambient_light[] = { 0.8f, 0.8f, 0.8f, 0.7f };
     float diffuse_light[] = { 1.0f, 1.0f, 1.0, 1.0f };
-    float specular_light[] = { 0.0f, 0.0f, 0.0f, 1.0f };
-    float position[] = { 0.0f, 0.0f, 10.0f, 1.0f };
+    float specular_light[] = { 0.9f, 0.9f, 0.9f, 1.0f };
+    float position[] = { 0.0f, 15.0f, 10.0f, 1.0f };
 
     glLightfv(GL_LIGHT0, GL_AMBIENT, ambient_light);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse_light);
@@ -73,6 +74,7 @@ void draw_scene(const Scene* scene)
     set_lighting();
     draw_origin();
     draw_model(&(scene->cube));
+
 }
 
 void draw_origin()
