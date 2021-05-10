@@ -12,13 +12,13 @@ void init_scene(Scene* scene)
 
     glBindTexture(GL_TEXTURE_2D, scene->texture_id);
 
-    scene->material.ambient.red = 0.0;
-    scene->material.ambient.green = 0.0;
-    scene->material.ambient.blue = 0.0;
+    scene->material.ambient.red = 1.0;
+    scene->material.ambient.green = 1.0;
+    scene->material.ambient.blue = 1.0;
 
-    scene->material.diffuse.red = 0.0;
-    scene->material.diffuse.green = 0.0;
-    scene->material.diffuse.blue = 0.0;
+    scene->material.diffuse.red = 1.1;
+    scene->material.diffuse.green = 1.1;
+    scene->material.diffuse.blue = 1.1;
 
     scene->material.specular.red = 0.0;
     scene->material.specular.green = 0.0;
