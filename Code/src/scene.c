@@ -70,7 +70,8 @@ void set_material(const Material* material)
     glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, &(material->shininess));
 }
 
-float angle = 0.0f;
+float forwoard = 0.0f;
+float multi = -1.0f;
 
 void draw_scene(const Scene* scene)
 {
@@ -79,23 +80,22 @@ void draw_scene(const Scene* scene)
     draw_origin();
 
     glPushMatrix();
-    glScalef(1.0f, 1.0f, 1.0f);
-    angle += 0.09f;
-    glRotatef(angle,0.0f,0.0f,0.0f);
-    glTranslatef(scene->hedgie.position.x, scene->hedgie.position.y, scene->hedgie.position.z+20);
+    glScalef(0.1f, 0.1f, 0.1f);
+    forwoard += 0.01f;
+    glRotatef(0.0f , 0.0f, 180.0f*multi, 0.0f);
+    glTranslatef(scene->hedgie.position.x, scene->hedgie.position.y, scene->hedgie.position.z-forwoard);
     draw_model(&(scene->hedgie));
     glPopMatrix();
 
     draw_model(&(scene->cube));
-    glRotatef(200.0f, 0.0f, 0.0f, 0.0f);
 
 }
 
 void set_position_hed(Scene *scene)
 {
-    scene->hedgie.position.x = -25;
-    scene->hedgie.position.y = -20;
-    scene->hedgie.position.z = 0;
+    scene->hedgie.position.x = -60;
+    scene->hedgie.position.y = 7;
+    scene->hedgie.position.z = 65;
 }
 
 
