@@ -18,6 +18,13 @@ typedef struct Camera
  */
 int is_preview_visible;
 
+
+/**
+ * Is the info visible
+ */
+int is_i_visible;
+
+
 /**
  * Initialize the camera to the start position.
  */

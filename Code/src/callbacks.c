@@ -22,6 +22,10 @@ void display()
         show_texture_preview();
     }
 
+    if (is_i_visible){
+        show_i();
+    }
+
     glutSwapBuffers();
 }
 
@@ -67,23 +71,46 @@ void keyboard(unsigned char key, int x, int y)
 {
     switch (key) {
     case 'w':
-        set_camera_speed(&camera, 1);
+        set_camera_speed(&camera, 5);
         break;
     case 's':
-        set_camera_speed(&camera, -1);
+        set_camera_speed(&camera, -5);
         break;
     case 'a':
-        set_camera_side_speed(&camera, 1);
+        set_camera_side_speed(&camera, 5);
         break;
     case 'd':
-        set_camera_side_speed(&camera, -1);
+        set_camera_side_speed(&camera, -5);
         break;
+    
     case 't':
         if (is_preview_visible) {
             is_preview_visible = FALSE;
         }
         else {
             is_preview_visible = TRUE;
+        }
+        break;
+    
+     case 'i':
+        if (is_i_visible) {
+            is_i_visible = FALSE;
+        }
+        else {
+            is_i_visible = TRUE;
+        }
+        break;
+
+     case '+':
+        if (scene.light < 1.0)
+        {
+            scene.light += 0.1;
+        }
+        break;
+    case '-':
+        if (scene.light > 0.2)
+        {
+            scene.light -= 0.1;
         }
         break;
     }

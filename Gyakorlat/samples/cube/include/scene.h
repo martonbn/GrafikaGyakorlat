@@ -8,6 +8,7 @@
 
 typedef struct Scene
 {
+    float light;
     Model cube;
     float cube_rotation;
     Material material;
@@ -22,7 +23,7 @@ void init_scene(Scene* scene);
 /**
  * Set the lighting of the scene.
  */
-void set_lighting();
+void set_lighting(Scene* scene);
 
 /**
  * Set the current material.
@@ -30,7 +31,7 @@ void set_lighting();
 void set_material(const Material* material);
 
 
-void update_scene(Scene* scene)
+void update_scene(Scene* scene, double time);
 
 
 /**

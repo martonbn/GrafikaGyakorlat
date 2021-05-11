@@ -17,6 +17,7 @@ void init_camera(Camera* camera)
     camera->speed.z = 0.0;
     glutInitWindowSize(1280, 720);
     is_preview_visible = FALSE;
+    is_i_visible = FALSE;
 }
 
 void update_camera(Camera* camera, double time)
@@ -56,12 +57,12 @@ void rotate_camera(Camera* camera, double horizontal, double vertical)
         camera->rotation.z -= 360.0;
     }
 
-    if (camera->rotation.x < 0) {
-        camera->rotation.x += 360.0;
+    if (camera->rotation.x < -80.0) {
+        camera->rotation.x = -80.0;
     }
 
-    if (camera->rotation.x > 360.0) {
-        camera->rotation.x -= 360.0;
+    if (camera->rotation.x > 80.0) {
+        camera->rotation.x = 80.0;
     }
 }
 
@@ -100,5 +101,35 @@ void show_texture_preview()
     glDisable(GL_COLOR_MATERIAL);
     glEnable(GL_LIGHTING);
     glEnable(GL_DEPTH_TEST);
+    
+
 }
 
+void show_i(struct Scene *scene)
+{
+
+    glDisable(GL_LIGHTING);
+    glDisable(GL_DEPTH_TEST);
+    glEnable(GL_COLOR_MATERIAL);
+    scene->info_id = load_texture("cube.png"); 
+    
+    glBindTexture(GL_TEXTURE_2D, scene->info_id);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    glBegin(GL_QUADS);
+    glTexCoord2f(0, 0);
+    glVertex3f(-1, 1, -3);
+    glTexCoord2f(1, 0);
+    glVertex3f(1, 1, -3);
+    glTexCoord2f(1, 1);
+    glVertex3f(1, -1, -3);
+    glTexCoord2f(0, 1);
+    glVertex3f(-1, -1, -3);
+    glEnd();
+
+    glDisable(GL_COLOR_MATERIAL);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_DEPTH_TEST);
+}

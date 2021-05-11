@@ -20,6 +20,7 @@ typedef struct Object
 
 typedef struct Scene
 {
+    float light;
     Model cube;
     Object hedgie;
     Material material;
@@ -41,7 +42,7 @@ void init_models(Scene *scene);
 /**
  * Set the lighting of the scene.
  */
-void set_lighting();
+void set_lighting(Scene *scene);
 
 /**
  * Set the current material.

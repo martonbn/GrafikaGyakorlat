@@ -25,14 +25,35 @@ void init_scene(Scene* scene)
     scene->material.specular.blue = 0.0;
 
     scene->material.shininess = 0.0;
+    scene->light=0.5f;
 }
 
-void set_lighting()
+void set_lighting(Scene* scene)
 {
-    float ambient_light[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-    float diffuse_light[] = { 0.0f, 0.0f, 0.0, 1.0f };
-    float specular_light[] = { 0.0f, 0.0f, 0.0f, 1.0f };
-    float position[] = { 0.0f, 0.0f, 10.0f, 1.0f };
+    float ambient_light[4];
+    float diffuse_light[4];
+    float specular_light[4];
+    float position[4];
+
+    ambient_light[0] = scene->light;
+    ambient_light[1] = scene->light;
+    ambient_light[2] = scene->light;
+    ambient_light[3] = 10.0f;
+
+    diffuse_light[0] = scene->light;
+    diffuse_light[1] = scene->light;
+    diffuse_light[2] = scene->light;
+    diffuse_light[3] = 10.0f;
+
+    specular_light[0] = scene->light;
+    specular_light[1] = scene->light;
+    specular_light[2] = scene->light;
+    specular_light[3] = 10.0f;
+
+    position[0] = 0.0f;
+    position[1] = 0.0f;
+    position[2] = 10.0f;
+    position[3] = 0.0f;
 
     glLightfv(GL_LIGHT0, GL_AMBIENT, ambient_light);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse_light);
