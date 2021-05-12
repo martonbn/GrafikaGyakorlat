@@ -110,7 +110,7 @@ void draw_scene(const Scene* scene)
 {
     set_material(&(scene->material));
     set_lighting(scene);
-    //draw_origin();
+    draw_origin();
     glPushMatrix();
     glScalef(0.1f, 0.1f, 0.1f);
     forwoard += 0.01f;
