@@ -15,20 +15,20 @@ void init_scene(Scene* scene)
     
     //glBindTexture(GL_TEXTURE_2D, scene->texture_id);
 
-    scene->material.ambient.red = 0.4;
-    scene->material.ambient.green = 0.4;
-    scene->material.ambient.blue = 0.4;
+    scene->material.ambient.red = 0.8;
+    scene->material.ambient.green = 0.8;
+    scene->material.ambient.blue = 0.8;
 
     scene->material.diffuse.red = 0.9;
     scene->material.diffuse.green = 0.9;
     scene->material.diffuse.blue = 0.9;
 
-    scene->material.specular.red = 0.8;
-    scene->material.specular.green = 1.5;
-    scene->material.specular.blue = 1.8;
+    scene->material.specular.red = 0.9;
+    scene->material.specular.green = 0.9;
+    scene->material.specular.blue = 0.9;
 
     scene->material.shininess = 0.0;
-    scene->light = 0.0f;
+    scene->light = 1.0f;
 }
 
 void set_lighting(Scene *scene)

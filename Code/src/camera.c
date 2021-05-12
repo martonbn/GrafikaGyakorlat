@@ -111,7 +111,7 @@ void show_i(struct Scene *scene)
     glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
     glEnable(GL_COLOR_MATERIAL);
-    scene->info_id = load_texture("cube.png"); 
+    scene->info_id = load_texture("info.png"); 
     
     glBindTexture(GL_TEXTURE_2D, scene->info_id);
 
