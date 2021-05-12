@@ -9,7 +9,7 @@
 void init_scene(Scene* scene)
 {
     init_models(scene);
-    set_position_hed(scene);
+    //set_position_hed(scene);
     load_model(&(scene->cube), "cube.obj");
     scene->texture_id = load_texture("cube.png"); 
     
@@ -28,7 +28,7 @@ void init_scene(Scene* scene)
     scene->material.specular.blue = 0.9;
 
     scene->material.shininess = 0.0;
-    scene->light = 1.0f;
+    scene->light = -1.0f;
 }
 
 void set_lighting(Scene *scene)
@@ -105,33 +105,32 @@ void set_material(const Material* material)
 }
 
 float forwoard = 0.0f;
-float multi = -1.0f;
 
 void draw_scene(const Scene* scene)
 {
     set_material(&(scene->material));
     set_lighting(scene);
     draw_origin();
-
     glPushMatrix();
     glScalef(0.1f, 0.1f, 0.1f);
     forwoard += 0.01f;
-    glRotatef(0.0f , 0.0f, 180.0f*multi, 0.0f);
-    glTranslatef(scene->hedgie.position.x, scene->hedgie.position.y, scene->hedgie.position.z-forwoard);
-    draw_model(&(scene->hedgie));
+    glRotatef(0.0f , 0.0f, 0.0f, 0.0f);
+    //glTranslatef(scene->hedgie.position.x, scene->hedgie.position.y, scene->hedgie.position.z-forwoard);
+    draw_model(&(scene->hedgie.model));
     glPopMatrix();
 
     draw_model(&(scene->cube));
 
 }
 
+/*
 void set_position_hed(Scene *scene)
 {
     scene->hedgie.position.x = -60;
     scene->hedgie.position.y = 7;
     scene->hedgie.position.z = 65;
 }
-
+*/
 
 
 

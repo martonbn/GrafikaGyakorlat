@@ -59,4 +59,7 @@ void draw_scene(const Scene* scene);
  */
 void draw_origin();
 
+
+//void set_position_hed(Scene *scene);
+
 #endif /* SCENE_H */
